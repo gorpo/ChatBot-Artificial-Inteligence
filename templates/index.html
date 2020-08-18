@@ -54,7 +54,7 @@
     // Icones  e nome das labes de mensagens
     const BOT_IMG = 'static/images/marcinho.jpg';
     const PERSON_IMG = 'static/images/gorpo.jpg';
-    const BOT_NAME = "ManicomioBot";
+    const BOT_NAME = "Marcinho";
     const PERSON_NAME = "Visitante";
 
     msgerForm.addEventListener("submit", event => {
@@ -69,7 +69,7 @@
     });
 
     function appendMessage(name, img, side, text) {
-      //   Simple solution for small apps
+      //   removi o background que eram imagens de fundo
       const msgHTML = `
 <div class="msg ${side}-msg">
   <div class="msg-img" style="background-image: url(${img})"></div>

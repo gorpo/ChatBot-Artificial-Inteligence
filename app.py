@@ -1,4 +1,4 @@
-from chatbot import chatbot
+from chatbot_trainer import chatbot
 
 from flask import Flask, render_template, request
 
