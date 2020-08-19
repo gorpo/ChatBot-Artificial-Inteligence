@@ -5,6 +5,23 @@
   --left-msg-bg: #ececec;
       --right-msg-bg: #650404;
 }
+
+/* INPUT DA IMAGEM - remove o texto apos botao
+input[type='file'] {
+    width: 132px;
+    overflow:hidden;
+    color: transparent;
+}*/
+.image-upload>input {
+  display: none;
+}
+
+.caixaimagem {
+max-width:50%;
+    height:auto;
+}
+
+
 /* FONTE */
 @font-face {
     font-family: '../fonts/blood_crowregular';
