@@ -7,7 +7,7 @@ from flask import Flask, flash, request, redirect, url_for, render_template
 
 app = Flask(__name__)
 app.secret_key = "secret key"
-app.config['UPLOAD_FOLDER'] = 'static/uploads/'
+app.config['UPLOAD_FOLDER'] = 'app/static/uploads/'
 app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024
 ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg', 'gif'])
 app.static_folder = 'static'
