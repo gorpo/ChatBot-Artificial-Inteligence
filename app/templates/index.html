@@ -48,13 +48,17 @@
         </div>
       </div>
 
-<!-- envio de imagens e zoom -->
+
+<!-- envio de imagens e zoom USUARIO -->
 {% if filename %}
         <!-- [LIGHTBOX CONTAINER] imagem ampliada-->
         <div id="lb-back">  <div id="lb-img"></div>  </div>
 		<!-- iamgem upada pelo botao-->
         <img class="zoomD" src="{{ url_for('exibeImagem', filename= filename) }}">
 {% endif %}
+
+
+
     </main>
 
      <!-- formulario do envio de mensagens de texto -->
@@ -67,8 +71,9 @@
 </form>
 
     <form class="msger-inputarea">
-      <input type="text" class="msger-input" id="textInput" placeholder="Envie sua mensagem...">
-      <button type="submit" class="msger-send-btn">Send</button>
+      <input type="text" class="msger-input" id="textInput" autocomplete="off" placeholder="Envie sua mensagem...">
+        <!-- remove o auto complete -->
+        <button type="submit" class="msger-send-btn">Send</button>
     </form>
 
   </section>
