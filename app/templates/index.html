@@ -49,11 +49,13 @@
       </div>
 
 
-<!-- envio de imagens e zoom USUARIO -->
+
+
+
+
+<!-- envio de imagens e zoom USUARIO-->
 {% if filename %}
-        <!-- [LIGHTBOX CONTAINER] imagem ampliada-->
         <div id="lb-back">  <div id="lb-img"></div>  </div>
-		<!-- iamgem upada pelo botao-->
         <img class="zoomD" src="{{ url_for('exibeImagem', filename= filename) }}">
 {% endif %}
 

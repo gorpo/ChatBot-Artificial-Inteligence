@@ -37,9 +37,8 @@ def corrigirPalavras(msg):
 
 app.config['a'] = os.path.join('static', 'images')
 @app.route('/')
-@app.route('/index')
 def show_index():
-    full_filename = os.path.join(app.config['a'], 'gorpo.jpg')
+    full_filename = os.path.join(app.config['a'], 'internet.gif')
     return render_template("envioImagemBot.html", user_image = full_filename)
 
 
