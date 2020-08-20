@@ -5,6 +5,71 @@
   --left-msg-bg: #ececec;
       --right-msg-bg: #650404;
 }
+
+/* INPUT DA IMAGEM - remove o texto apos botao
+input[type='file'] {
+    width: 132px;
+    overflow:hidden;
+    color: transparent;
+}*/
+.image-upload>input {
+  display: none;
+}
+
+.caixaimagem {
+max-width: 30%;
+    height:auto;
+}
+
+/* [IMAGEM APOS UPADA] */
+.zoomD {
+  width: 450px;
+  height: auto;
+  cursor: pointer;
+}
+
+/* [LIGHTBOX BACKGROUND - IMAGEM EM TAMANHO GRANDE] */
+#lb-back {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+  visibility: hidden;
+  opacity: 0;
+  transition: all ease 0.4s;
+}
+#lb-back.show {
+  visibility: visible;
+  opacity: 1;
+}
+
+/* [LIGHTBOX IMAGE] */
+#lb-img {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+  text-align: center;
+}
+#lb-img img {
+  /* You might want to play around with
+     width, height, max-width, max-height
+     to fit portrait / landscape pictures properly. */
+  width: 50%;
+  height: auto;
+
+  /* ALTERNATE EXAMPLE
+  width: 100%;
+  max-width: 1200px;
+  height: auto;
+  margin: 0 auto; */
+}
+
+
+
+
 /* FONTE */
 @font-face {
     font-family: '../fonts/blood_crowregular';

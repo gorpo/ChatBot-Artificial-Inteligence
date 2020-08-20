@@ -1,6 +1,6 @@
 from chatterbot import ChatBot
 
-chatbot = ChatBot('CoronaBot',
+chatbot = ChatBot('Marcinho',
     storage_adapter='chatterbot.storage.SQLStorageAdapter',
 
     database_uri='sqlite:///database.sqlite3'

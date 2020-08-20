@@ -9,22 +9,9 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" href="{{ url_for('static', filename='styles/style.css') }}">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
-  <script src="{{ url_for('static', filename='js/zoom.js') }}"></script>
-
-
-
 </head>
 
 <body>
-
-
-
-
-
-
-
-
 <div class="titulo">ARTIFICIAL INTELIGENCE</div>
   <!-- partial:index.partial.html -->
   <section class="msger">
@@ -33,7 +20,6 @@
     </header>
 
     <main class="msger-chat">
-
       <div class="msg left-msg">
         <div class="msg-img" style="background-image: url('static/images/marcinho.jpg')"></div>
 
@@ -48,20 +34,15 @@
         </div>
       </div>
 
-
-
-
-
 {% if filename %}
-        <!-- [LIGHTBOX CONTAINER] imagem ampliada-->
-        <div id="lb-back">  <div id="lb-img"></div>  </div>
-		<!-- iamgem upada pelo botao-->
-        <img class="zoomD" src="{{ url_for('display_image', filename= filename) }}">
+	<div class="msg-img">
+		<img src="{{ url_for('display_image', filename= filename) }}">
+	</div>
 {% endif %}
 
 
     </main>
-    <form method="post" action="/" enctype="multipart/form-data">
+    <form method="post" class="imagem" action="/" enctype="multipart/form-data">
     <dl>
 		<p>
 			<input type="file" value="Submit" name="file" autocomplete="off" onchange="this.form.submit();" required>
@@ -87,7 +68,6 @@
     const msgerForm = get(".msger-inputarea");
     const msgerInput = get(".msger-input");
     const msgerChat = get(".msger-chat");
-    const imagem = get(".imagem")
 
 
     // Icones  e nome das labes de mensagens
