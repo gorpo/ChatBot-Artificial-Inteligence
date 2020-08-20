@@ -21,5 +21,5 @@ app.static_folder = 'static'
 
 
 from app.controladores import home
-from app.controladores import mensagens
+from app.controladores import mensagens_get
 from app.controladores import envio_imagens

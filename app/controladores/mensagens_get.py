@@ -11,9 +11,15 @@
 #     [+]        Github Gorpo Dev: https://github.com/gorpo     [+]
 
 from app import app
-from flask import render_template
+from flask import request
+from app.chatterbot_files.chatbot_trainer import chatbot
 
-@app.route("/")
-def home():
-    return render_template("index.html")
 
+@app.route("/get")
+def get_user_response():
+    user = request.args.get('msg')
+    if user == 'oi':
+
+        return 'oi'#str(chatbot.get_response(userText))
+    else:
+        return str(chatbot.get_response(user))
