@@ -6,12 +6,14 @@
 [![Build](https://img.shields.io/badge/arquiterura-64bits-blue.svg)]()<br>
   <h6 align="center">
    <img src="https://raw.githubusercontent.com/gorpo/Manicomio-Boot-Theme/master/manicomio/boot.png" width="55%"></img>
-       <h2 align="center">Manicomio | Python Chatterbot Flask | Corpus Português | versao02</h2>
+       <h2 align="center">Manicomio | Python Chatterbot Flask | Corpus Português | versao01</h2>
   </h6>
 <h3> Chatbot em Python com uso das Libs Chatterbot e Flask e integração de treinamento Corpus</h3><br>
 <img src="https://github.com/gorpo/Manicomio-Chatterbot-Python/blob/master/static/exemplo.png" width="100%"></img>
 
 <p>Chatbot desenvolvido em python com auxilio das bibliotecas --chatterbot e --flask, este chatbot faz a leitura e treinamento com arquivos Corpus, os quais ja temos alguns --corpus inseridos nele e outros podem ser colocados para treinar melhor nosso chatbot.</p>
+
+#Esta versao ele contem apenas o chatterbot e so fala as coisas de treino
 
 # Requisitos:
 -Python3+<br>
