@@ -42,7 +42,9 @@ def show_index():
     return render_template("envioImagemBot.html", user_image = full_filename)
 
 
-
+@app.route('/')
+def exibeImagem2():
+    return redirect(url_for('static', filename='images/gorpo.jpg'), code=301)
 
 
 @app.route("/get")
@@ -55,7 +57,7 @@ def get_user_response():
     if msg.split()[0] == 'corrigir':
         return corrigirPalavras(msg)
     if msg == 'teste':
-
+        #return  exibeImagem2()
         return show_index()
 
 
