@@ -1,3 +1,14 @@
+<!-- # -*- coding: utf-8 -*-
+# ███╗   ███╗ █████╗ ███╗   ██╗██╗ ██████╗ ██████╗ ███╗   ███╗██╗ ██████╗
+# ████╗ ████║██╔══██╗████╗  ██║██║██╔════╝██╔═══██╗████╗ ████║██║██╔═══██╗
+# ██╔████╔██║███████║██╔██╗ ██║██║██║     ██║   ██║██╔████╔██║██║██║   ██║
+# ██║╚██╔╝██║██╔══██║██║╚██╗██║██║██║     ██║   ██║██║╚██╔╝██║██║██║   ██║
+# ██║ ╚═╝ ██║██║  ██║██║ ╚████║██║╚██████╗╚██████╔╝██║ ╚═╝ ██║██║╚██████╔╝
+# ╚═╝     ╚═╝╚═╝  ╚═╝╚═╝  ╚═══╝╚═╝ ╚═════╝ ╚═════╝ ╚═╝     ╚═╝╚═╝ ╚═════╝
+#     [+] @GorpoOrko 2020 - Telegram Bot and Personal Assistant [+]
+#     |   TCXS Project Hacker Team - https://tcxsproject.com.br   |
+#     |   Telegram: @GorpoOrko Mail:gorpoorko@protonmail.com      |
+#     [+]        Github Gorpo Dev: https://github.com/gorpo     [+] -->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,17 +20,20 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" href="{{ url_for('static', filename='styles/style.css') }}">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="{{ url_for('static', filename='js/zoom.js') }}"></script>
 </head>
+
 
 <body>
 <div class="titulo">ARTIFICIAL INTELIGENCE</div>
-  <!-- partial:index.partial.html -->
+  <!-- inicio do sistema de chat -->
   <section class="msger">
     <header class="msger-header">
       <div class="msger-header-title"></div>
     </header>
 
     <main class="msger-chat">
+
       <div class="msg left-msg">
         <div class="msg-img" style="background-image: url('static/images/marcinho.jpg')"></div>
 
@@ -28,28 +42,66 @@
             <div class="msg-info-name">Marcinho</div>
             <div class="msg-info-time">12:45</div>
           </div>
-
           <div class="msg-text">
             Olá, bem vindo sou o Marcinho! Vamos lá, me envie uma mensagem. 😄
           </div>
         </div>
       </div>
 
+
+
+
+<!-- envio de imagens e zoom USUARIO
+{% if filename %}
+        <div id="lb-back">  <div id="lb-img"></div>  </div>
+        <img class="zoomD" src="{{ url_for('exibeImagem2', filename= filename) }}">
+{% endif %}-->
+
+
+<!-- envio de imagens e zoom USUARIO-->
+{% if filename %}
+    <div id="lb-back">  <div id="lb-img"></div>  </div>
+    <img class="zoomD" src="{{ url_for('exibeImagem', filename= filename) }}">
+
+    <!-- BOTOES DA IMAGEM -->
+    <div class="barra_preta_img">
+        <form method="post" action="/">
+                <input type="submit" value="Encrypt" name="Encrypt"/>
+                <input type="submit" value="Decrypt" name="Decrypt" />
+        </form>
+    </div>
+
+
+{% endif %}
+
+
+
     </main>
 
+     <!-- formulario do envio de mensagens de texto -->
+    <form method="post" action="/" enctype="multipart/form-data">
+    <dl>
+		<p>
+			<input type="file" value="Submit" name="file" autocomplete="off" onchange="this.form.submit();" required>
+		</p>
+    </dl>
+</form>
+
     <form class="msger-inputarea">
-      <input type="text" class="msger-input" id="textInput" placeholder="Envie sua mensagem...">
-      <button type="submit" class="msger-send-btn">Send</button>
+      <input type="text" class="msger-input" id="textInput" autocomplete="off" placeholder="Envie sua mensagem...">
+        <!-- remove o auto complete -->
+        <button type="submit" class="msger-send-btn">Send</button>
     </form>
+
   </section>
-  <!-- partial -->
+
+  <!-- inicio do script de envio de textos -->
   <script src='https://use.fontawesome.com/releases/v5.0.13/js/all.js'></script>
   <script>
-
     const msgerForm = get(".msger-inputarea");
     const msgerInput = get(".msger-input");
     const msgerChat = get(".msger-chat");
-
+    const imagem = get(".imagem")
 
     // Icones  e nome das labes de mensagens
     const BOT_IMG = 'static/images/marcinho.jpg';
@@ -59,10 +111,8 @@
 
     msgerForm.addEventListener("submit", event => {
       event.preventDefault();
-
       const msgText = msgerInput.value;
       if (!msgText) return;
-
       appendMessage(PERSON_NAME, PERSON_IMG, "right", msgText);
       msgerInput.value = "";
       botResponse(msgText);
@@ -73,7 +123,6 @@
       const msgHTML = `
 <div class="msg ${side}-msg">
   <div class="msg-img" style="background-image: url(${img})"></div>
-
   <div class="msg-bubble">
     <div class="msg-info">
       <div class="msg-info-name">${name}</div>
@@ -84,22 +133,18 @@
   </div>
 </div>
 `;
-
       msgerChat.insertAdjacentHTML("beforeend", msgHTML);
       msgerChat.scrollTop += 500;
     }
 
     function botResponse(rawText) {
-
       // Bot Response
       $.get("/get", { msg: rawText }).done(function (data) {
         console.log(rawText);
         console.log(data);
         const msgText = data;
         appendMessage(BOT_NAME, BOT_IMG, "left", msgText);
-
       });
-
     }
 
 
@@ -107,18 +152,11 @@
     function get(selector, root = document) {
       return root.querySelector(selector);
     }
-
     function formatDate(date) {
       const h = "0" + date.getHours();
       const m = "0" + date.getMinutes();
-
       return `${h.slice(-2)}:${m.slice(-2)}`;
     }
-
-
-
   </script>
-
 </body>
-
 </html>
