@@ -11,34 +11,31 @@
 #     [+]        Github Gorpo Dev: https://github.com/gorpo     [+]
 
 
-from app import app
-from flask import request
+import os
+import subprocess
 
-#imports da inteligência
-from app.chatterbot_files.chatbot_trainer import chatbot
-from app.plugins.gifs import gifInternet
-from app.plugins import corrige_palavras
-from app.plugins import wiki_ia
+def interpretadorPython(msg):
+    with open("test2", "w") as f:
+        codigo = str(msg).replace('python ','')
+        f.write(codigo)
 
+    (readend, writeend) = os.pipe()
 
-#funções de resposta com texto do bot com base nos plugins
-@app.route("/get")
-def get_user_response():
-    msg = request.args.get('msg')
+    p = subprocess.Popen(['python', '-u', 'test2'], stdout=writeend, bufsize=0)
+    still_open = True
+    output = ""
+    output_buf = os.read(readend, 100).decode()
+    print(output_buf)
 
-    if msg == 'oi':
-        return 'oi'
-
-    if 'fale sobre' in msg.lower():
-        return wiki_ia.faleSobre(msg)
-
-    if msg.split()[0] == 'corrigir':
-        return corrige_palavras.corrigirPalavras(msg)
-
-    if msg == 'internet':
-        return gifInternet()
-
-    else:
-        return str(chatbot.get_response(msg))
-
+    while output_buf:
+        print(output_buf)  #,end=""
+        output += output_buf
+        if still_open and p.poll() is not None:
+            os.close(writeend)
+            still_open = False
+        output_buf = os.read(readend, 1).decode()
+        if p.poll() is None:
+            break
+    print(output)
+    return output
 

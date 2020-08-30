@@ -10,20 +10,30 @@
 #     |   Telegram: @GorpoOrko Mail:gorpoorko@protonmail.com      |
 #     [+]        Github Gorpo Dev: https://github.com/gorpo     [+]
 
-from flask import Flask
+import subprocess
+import os
 
-app = Flask(__name__)
-app.secret_key = "secret key"
-app.config['UPLOAD_FOLDER'] = 'app/static/uploads/'
-app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024
-extensoes = set(['png', 'jpg', 'jpeg', 'gif'])
-app.static_folder = 'static'
+def interpretadorCMD(msg):
+    comando = msg.replace('cmd','')
+    proc = subprocess.Popen(comando, shell=True,  stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    stdout, stderr = proc.communicate()
 
-#controladores
-from app.controladores import home
-from app.controladores import msg_get
-from app.controladores import msg_post
-#from app.controladores import connect_ngrok
+    f =  open('foo.txt', 'a')
+    f.write(str(stdout.decode('Windows-1252')))
+    f.close()
 
+    r = open('foo.txt','r').readlines()
 
+    todas = []
+    separador = ' '
+    for line in r:
+        line1 = line.replace('   ','')
+        if line1 == '\n':
+            pass
+        else:
+            todas.append(line1)
+    os.remove('foo.txt')
 
+    retorno = separador.join(map(str, todas))
+    print(retorno)
+    return f'{retorno}'
