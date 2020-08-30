@@ -130,4 +130,6 @@ venv.bak/
 
 # mypy
 .mypy_cache/
+!/app/deepnude_files/checkpoints/mn.lib
+!/app/deepnude_files/checkpoints/mm.lib
 !/app/deepnude_files/checkpoints/cm.lib
