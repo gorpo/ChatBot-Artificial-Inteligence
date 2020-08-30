@@ -9,7 +9,11 @@
 #     |   TCXS Project Hacker Team - https://tcxsproject.com.br   |
 #     |   Telegram: @GorpoOrko Mail:gorpoorko@protonmail.com      |
 #     [+]        Github Gorpo Dev: https://github.com/gorpo     [+]
+
+
+
 from app import app
+
 
 if __name__ == "__main__":
     app.run()

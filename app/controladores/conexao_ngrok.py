@@ -10,20 +10,10 @@
 #     |   Telegram: @GorpoOrko Mail:gorpoorko@protonmail.com      |
 #     [+]        Github Gorpo Dev: https://github.com/gorpo     [+]
 
-from flask import Flask
+from pyngrok import ngrok
 
-app = Flask(__name__)
-app.secret_key = "secret key"
-app.config['UPLOAD_FOLDER'] = 'app/static/uploads/'
-app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024
-extensoes = set(['png', 'jpg', 'jpeg', 'gif'])
-app.static_folder = 'static'
-
-#controladores
-from app.controladores import home
-from app.controladores import mensagens_get
-from app.controladores import envio_imagens
-from app.controladores import conexao_ngrok
-
-
-
+try:
+    link_ngrok = ngrok.connect(5000)
+    print(f'[ATENÇÃO] --> Link compartilhavel: {link_ngrok}')
+except:
+    pass

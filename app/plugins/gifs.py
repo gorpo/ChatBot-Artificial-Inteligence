@@ -10,20 +10,14 @@
 #     |   Telegram: @GorpoOrko Mail:gorpoorko@protonmail.com      |
 #     [+]        Github Gorpo Dev: https://github.com/gorpo     [+]
 
-from flask import Flask
 
-app = Flask(__name__)
-app.secret_key = "secret key"
-app.config['UPLOAD_FOLDER'] = 'app/static/uploads/'
-app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024
-extensoes = set(['png', 'jpg', 'jpeg', 'gif'])
-app.static_folder = 'static'
+import os
+from app import app
+from flask import render_template, request
 
-#controladores
-from app.controladores import home
-from app.controladores import mensagens_get
-from app.controladores import envio_imagens
-from app.controladores import conexao_ngrok
 
+def gifInternet():
+    full_filename = os.path.join(os.path.join('static', 'images'), 'internet.gif')
+    return render_template("envioImagemBot.html", user_image = full_filename)
 
 

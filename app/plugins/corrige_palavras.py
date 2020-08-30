@@ -1,4 +1,4 @@
-<!-- # -*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
 # ███╗   ███╗ █████╗ ███╗   ██╗██╗ ██████╗ ██████╗ ███╗   ███╗██╗ ██████╗
 # ████╗ ████║██╔══██╗████╗  ██║██║██╔════╝██╔═══██╗████╗ ████║██║██╔═══██╗
 # ██╔████╔██║███████║██╔██╗ ██║██║██║     ██║   ██║██╔████╔██║██║██║   ██║
@@ -8,29 +8,21 @@
 #     [+] @GorpoOrko 2020 - Telegram Bot and Personal Assistant [+]
 #     |   TCXS Project Hacker Team - https://tcxsproject.com.br   |
 #     |   Telegram: @GorpoOrko Mail:gorpoorko@protonmail.com      |
-#     [+]        Github Gorpo Dev: https://github.com/gorpo     [+] -->
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <meta charset="UTF-8">
-  <title>Manicomio IA</title>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel="stylesheet" href="{{ url_for('static', filename='styles/style.css') }}">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script src="{{ url_for('static', filename='js/zoom.js') }}"></script>
-</head>
+#     [+]        Github Gorpo Dev: https://github.com/gorpo     [+]
 
 
-<body>
+from spellchecker import SpellChecker
 
 
-{% if filename %}
-        <div id="lb-back">  <div id="lb-img"></div>  </div>
-        <img class="zoomD" src="{{ url_for('exibeImagem', filename= filename) }}">
-{% endif %}
+def corrigirPalavras(msg):
+    spell = SpellChecker(language='pt')
+    mensagem = msg
+    misspelled = spell.unknown(mensagem.split())
+    palavra_errada = list(misspelled)[0]  # retorna a palavra que estava errada na frase
+    for palavra_final in misspelled:
+        corrigir = spell.correction(palavra_final)
+        candidatos = spell.candidates(palavra_final)
+        mensagem_corrigida = mensagem.replace(palavra_errada, corrigir).replace('corrigir', '')
+    return  mensagem_corrigida
 
-</body>
-</html>
+

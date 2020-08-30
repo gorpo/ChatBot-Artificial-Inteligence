@@ -10,20 +10,12 @@
 #     |   Telegram: @GorpoOrko Mail:gorpoorko@protonmail.com      |
 #     [+]        Github Gorpo Dev: https://github.com/gorpo     [+]
 
-from flask import Flask
-
-app = Flask(__name__)
-app.secret_key = "secret key"
-app.config['UPLOAD_FOLDER'] = 'app/static/uploads/'
-app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024
-extensoes = set(['png', 'jpg', 'jpeg', 'gif'])
-app.static_folder = 'static'
-
-#controladores
-from app.controladores import home
-from app.controladores import mensagens_get
-from app.controladores import envio_imagens
-from app.controladores import conexao_ngrok
 
 
+import wikipedia
 
+def faleSobre(msg):
+    termo = msg[10:]
+    wikipedia.set_lang("pt")
+    pesquisa = wikipedia.summary(termo)
+    return pesquisa
