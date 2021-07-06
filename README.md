@@ -11,7 +11,7 @@
 <h3> Chatbot em Python com uso das Libs Chatterbot e Flask e integração de treinamento Corpus</h3><br>
 <img src="https://github.com/gorpo/Manicomio-Chatterbot-Python/blob/master/static/exemplo.png" width="100%"></img>
 
-<p>Chatbot desenvolvido em python com auxilio das bibliotecas --chatterbot e --flask, este chatbot faz a leitura e treinamento com arquivos Corpus, os quais ja temos alguns --corpus inseridos nele e outros podem ser colocados para treinar melhor nosso chatbot.</p>
+<p>Ultima versão neste formato, novas versoes foram feitas separadas...<br>Chatbot desenvolvido em python com auxilio das bibliotecas --chatterbot e --flask, este chatbot faz a leitura e treinamento com arquivos Corpus, os quais ja temos alguns --corpus inseridos nele e outros podem ser colocados para treinar melhor nosso chatbot.</p>
 
 # Requisitos:
 -Python3+<br>
